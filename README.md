@@ -12,7 +12,7 @@ npm i next-native-image
 ```
 
 ## Usage
-Example with [tailwindcss](https://tailwindcss.com) and [https://github.com/tailwindlabs/tailwindcss-aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio):
+Example with [tailwindcss](https://tailwindcss.com) and [tailwindcss-aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio):
 
 ```javascript
 import Image from "next-native-image";
