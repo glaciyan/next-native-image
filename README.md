@@ -1,4 +1,5 @@
 # next-native-image
+Modified next/image to add the option "native" to layout which creates a plain img tag without wrappers or styles
 
 ## Installation
 ```sh

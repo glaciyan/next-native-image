@@ -23,7 +23,10 @@
     "type": "git",
     "url": "git+https://github.com/slimetsp/next-native-image.git"
   },
-  "keywords": [],
+  "keywords": [
+    "nextjs",
+    "next/image"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
