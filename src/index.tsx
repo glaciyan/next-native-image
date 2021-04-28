@@ -1,14 +1,13 @@
-// https://github.com/vercel/next.js/blob/canary/packages/next/client/image.tsx
 import React from "react";
-import Head from "next/head";
-import { toBase64 } from "next/dist/next-server/lib/to-base-64";
+import Head from "../next-server/lib/head";
+import { toBase64 } from "../next-server/lib/to-base-64";
 import {
   ImageConfig,
   imageConfigDefault,
   LoaderValue,
   VALID_LOADERS,
-} from "next/dist/next-server/server/image-config";
-import { useIntersection } from "next/dist/client/use-intersection";
+} from "../next-server/server/image-config";
+import { useIntersection } from "./use-intersection";
 
 if (typeof window === "undefined") {
   (global as any).__NEXT_IMAGE_IMPORTED = true;
@@ -42,7 +41,6 @@ const VALID_LAYOUT_VALUES = [
   "fixed",
   "intrinsic",
   "responsive",
-  "native",
   undefined,
 ] as const;
 type LayoutValue = typeof VALID_LAYOUT_VALUES[number];
@@ -69,11 +67,10 @@ export type ImageProps = Omit<
         unsized: true;
       }
     | { width?: never; height?: never; layout: "fill" }
-    | { width: number | string; height?: never; layout: "native" }
     | {
         width: number | string;
         height: number | string;
-        layout?: Exclude<Exclude<LayoutValue, "fill">, "native">;
+        layout?: Exclude<LayoutValue, "fill">;
       }
   );
 
@@ -230,8 +227,6 @@ export default function Image({
   let rest: Partial<ImageProps> = all;
   let layout: NonNullable<LayoutValue> = sizes ? "responsive" : "intrinsic";
   let unsized = false;
-  let native = false;
-
   if ("unsized" in rest) {
     unsized = Boolean(rest.unsized);
     // Remove property so it's not spread into image:
@@ -325,8 +320,7 @@ export default function Image({
   if (
     typeof widthInt !== "undefined" &&
     typeof heightInt !== "undefined" &&
-    layout !== "fill" &&
-    layout !== "native"
+    layout !== "fill"
   ) {
     // <Image src="i.png" width="100" height="100" />
     const quotient = heightInt / widthInt;
@@ -388,8 +382,6 @@ export default function Image({
       boxSizing: "border-box",
       margin: 0,
     };
-  } else if (layout === "native") {
-    native = true;
   } else {
     // <Image src="i.png" />
     if (process.env.NODE_ENV !== "production") {
@@ -418,14 +410,13 @@ export default function Image({
     });
   }
 
-  if (unsized || native) {
+  if (unsized) {
     wrapperStyle = undefined;
     sizerStyle = undefined;
     imgStyle = undefined;
   }
-
-  const component = (
-    <>
+  return (
+    <div style={wrapperStyle}>
       {sizerStyle ? (
         <div style={sizerStyle}>
           {sizerSvg ? (
@@ -498,14 +489,8 @@ export default function Image({
           ></link>
         </Head>
       ) : null}
-    </>
+    </div>
   );
-
-  if (wrapperStyle) {
-    return <div style={wrapperStyle}>{component}</div>;
-  } else {
-    return component;
-  }
 }
 
 //BUILT IN LOADERS
