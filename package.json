@@ -1,0 +1,35 @@
+{
+  "name": "next-native-image",
+  "version": "1.0.0",
+  "description": "Modified next/image to allow you to use a new \"native\" layout which doesn't create any wrapper and styles",
+  "main": "image.jsx",
+  "types": "types",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slimetsp/next-native-image.git"
+  },
+  "keywords": [
+    "next",
+    "nextjs",
+    "image"
+  ],
+  "author": "slimetsp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slimetsp/next-native-image/issues"
+  },
+  "homepage": "https://github.com/slimetsp/next-native-image#readme",
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "next": "^10.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
