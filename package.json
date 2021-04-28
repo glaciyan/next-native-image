@@ -1,20 +1,23 @@
 {
   "name": "next-native-image",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "next": "^10.2.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+  "version": "1.0.1",
+  "description": "Modified next/image to add the option \"native\" to layout which creates a plain img tag without wrappers or styles.",
+  "main": "lib/index.js",
+  "types": "lib",
+  "peerDependencies": {
+    "next": "=>10.0.0",
+    "react": "=>17.0.0"
   },
   "devDependencies": {
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
+    "next": "^10.2.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "typescript": "^4.2.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
