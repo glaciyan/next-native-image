@@ -4,6 +4,9 @@
   "description": "Modified next/image to add the option \"native\" to layout which creates a plain img tag without wrappers or styles.",
   "main": "lib/index.js",
   "types": "lib",
+  "files": [
+    "lib"
+  ],
   "peerDependencies": {
     "next": "=>10.0.0",
     "react": "=>17.0.0"
