@@ -77,12 +77,6 @@ export type ImageProps = Omit<
         style?: React.CSSProperties;
       }
     | {
-        /* auto */ width?: never;
-        height?: never;
-        layout?: never;
-        style?: React.CSSProperties;
-      }
-    | {
         style?: never;
         width: number | string;
         height: number | string;
