@@ -36,11 +36,6 @@ export declare type ImageProps = Omit<JSX.IntrinsicElements["img"], "src" | "src
     layout: "native";
     style?: React.CSSProperties;
 } | {
-    width?: never;
-    height?: never;
-    layout?: never;
-    style?: React.CSSProperties;
-} | {
     style?: never;
     width: number | string;
     height: number | string;
