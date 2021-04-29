@@ -67,10 +67,23 @@ export type ImageProps = Omit<
         height?: never;
         /** @deprecated Use `layout="fill"` instead */
         unsized: true;
+        style?: never;
       }
-    | { width?: never; height?: never; layout: "fill" }
-    | { width: number | string; height?: never; layout: "native" }
+    | { width?: never; height?: never; layout: "fill"; style?: never }
     | {
+        /* native layout */ width: number | string;
+        height?: never;
+        layout: "native";
+        style?: React.CSSProperties;
+      }
+    | {
+        /* auto */ width?: never;
+        height?: never;
+        layout?: never;
+        style?: React.CSSProperties;
+      }
+    | {
+        style?: never;
         width: number | string;
         height: number | string;
         layout?: Exclude<Exclude<LayoutValue, "fill">, "native">;
@@ -225,6 +238,7 @@ export default function Image({
   objectFit,
   objectPosition,
   loader = defaultImageLoader,
+  style,
   ...all
 }: ImageProps) {
   let rest: Partial<ImageProps> = all;
@@ -461,7 +475,7 @@ export default function Image({
             src={src}
             decoding="async"
             sizes={sizes}
-            style={imgStyle}
+            style={imgStyle || style}
             className={className}
           />
         </noscript>
@@ -472,7 +486,7 @@ export default function Image({
         decoding="async"
         className={className}
         ref={setRef}
-        style={imgStyle}
+        style={imgStyle || style}
       />
       {priority ? (
         // Note how we omit the `href` attribute, as it would only be relevant
