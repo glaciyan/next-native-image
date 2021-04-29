@@ -1,6 +1,6 @@
 {
   "name": "next-native-image",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Modified next/image to add the option \"native\" to layout which creates a plain img tag without wrappers or styles.",
   "main": "lib/index.js",
   "types": "lib",
